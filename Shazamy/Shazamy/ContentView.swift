@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Shazamify
+//  Shazamy
 //
 //  Created by will astilla on 11/10/22.
 //
