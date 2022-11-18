@@ -21,6 +21,7 @@
 		746E089F2926D3BE00B9A076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		746E08A32926D4F000B9A076 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../../Downloads/ios-sdk-1.2.2/SpotifyiOS.framework"; sourceTree = "<group>"; };
 		746E08A52926D5F300B9A076 /* SpotifyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyController.swift; sourceTree = "<group>"; };
+		746E08AC292729D100B9A076 /* Shazamy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shazamy.entitlements; sourceTree = "<group>"; };
 		74B555AF291DB89E001F76F8 /* Shazamy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shazamy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B555B2291DB89E001F76F8 /* ShazamyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamyApp.swift; sourceTree = "<group>"; };
 		74B555B4291DB89E001F76F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		74B555B1291DB89E001F76F8 /* Shazamy */ = {
 			isa = PBXGroup;
 			children = (
+				746E08AC292729D100B9A076 /* Shazamy.entitlements */,
 				746E089F2926D3BE00B9A076 /* Info.plist */,
 				74B555C6291DB9E2001F76F8 /* Models  */,
 				74B555C3291DB8CC001F76F8 /* Views */,
@@ -320,10 +322,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Shazamy/Shazamy.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Shazamy/Preview Content\"";
-				DEVELOPMENT_TEAM = WHSJ688ZS9;
+				DEVELOPMENT_TEAM = BFZYMS7L7S;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -331,6 +335,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Shazamy/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "ShazamKit Requires Access To Microphone";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -341,8 +346,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "App-Team.Shazamy";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iosapprenticeship-f22.shazamify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -354,10 +360,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Shazamy/Shazamy.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Shazamy/Preview Content\"";
-				DEVELOPMENT_TEAM = WHSJ688ZS9;
+				DEVELOPMENT_TEAM = BFZYMS7L7S;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -365,6 +373,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Shazamy/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "ShazamKit Requires Access To Microphone";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -375,8 +384,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "App-Team.Shazamy";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iosapprenticeship-f22.shazamify";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
