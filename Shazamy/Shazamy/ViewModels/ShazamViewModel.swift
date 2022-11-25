@@ -8,22 +8,34 @@
 import Foundation
 
 import AVKit
-import ShazamKit
 import Combine
+import ShazamKit
 
 @MainActor
 class ViewModel: NSObject, ObservableObject {
     @Published var currentItem: SHMediaItem? = nil
+    @Published var shazamMedia: ShazamMedia = .init(title: "Title...", subtitle: "Subtitle...", artistName: "Artist Name...", albumArtURL: URL(string: "https://google.com"), genres: ["Pop"])
+
     @Published var shazaming = false
+    @Published var found = false
 
     private let session = SHSession()
     private let audioEngine = AVAudioEngine()
+    private let signatureGenerator = SHSignatureGenerator()
 
     override init() {
         super.init()
         session.delegate = self
     }
 
+    public func check(){
+        if self.shazamMedia.title != "Title..."{
+            self.found = true
+        }
+        else{
+            self.found = false
+        }
+    }
     private func prepareAudioRecording() throws {
         let audioSession = AVAudioSession.sharedInstance()
         try audioSession.setCategory(.record)
@@ -40,6 +52,7 @@ class ViewModel: NSObject, ObservableObject {
     }
 
     private func startAudioRecording() throws {
+        self.found = false
         try audioEngine.start()
         shazaming = true
     }
@@ -68,10 +81,17 @@ class ViewModel: NSObject, ObservableObject {
 
 extension ViewModel: SHSessionDelegate {
     func session(_ session: SHSession, didFind match: SHMatch) {
-        guard let mediaItem = match.mediaItems.first else { return }
+        let mediaItems = match.mediaItems
 
-        Task {
-            self.currentItem = mediaItem
+        if let firstItem = mediaItems.first {
+            let _shazamMedia = ShazamMedia(title: firstItem.title, subtitle: firstItem.subtitle, artistName: firstItem.artist, albumArtURL: firstItem.artworkURL, genres: firstItem.genres)
+
+            DispatchQueue.main.async {
+                self.shazamMedia = _shazamMedia
+            }
+            
+         
         }
+        
     }
 }

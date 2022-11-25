@@ -8,18 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		746E08A62926D5F300B9A076 /* SpotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E08A52926D5F300B9A076 /* SpotifyController.swift */; };
-		746E08A92926E68A00B9A076 /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 746E08A82926E68A00B9A076 /* SpotifyAPI */; };
 		74B555B3291DB89E001F76F8 /* ShazamyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B555B2291DB89E001F76F8 /* ShazamyApp.swift */; };
 		74B555B5291DB89E001F76F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B555B4291DB89E001F76F8 /* ContentView.swift */; };
 		74B555B7291DB89F001F76F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B555B6291DB89F001F76F8 /* Assets.xcassets */; };
 		74B555BA291DB89F001F76F8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B555B9291DB89F001F76F8 /* Preview Assets.xcassets */; };
 		74B555C2291DB8B1001F76F8 /* ShazamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B555C1291DB8B1001F76F8 /* ShazamViewModel.swift */; };
 		74B555C5291DB8D7001F76F8 /* ShazamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B555C4291DB8D7001F76F8 /* ShazamView.swift */; };
+		74F77DE629311BA100E1CD41 /* ShazamMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DE529311BA100E1CD41 /* ShazamMedia.swift */; };
+		74F77DE82931347C00E1CD41 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DE72931347C00E1CD41 /* PlaylistView.swift */; };
+		74F77DEA293134CA00E1CD41 /* SongSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DE9293134CA00E1CD41 /* SongSearchViewModel.swift */; };
+		74F77DEC293134F800E1CD41 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DEB293134F800E1CD41 /* PlaylistViewModel.swift */; };
+		74F77DEE2931351900E1CD41 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DED2931351900E1CD41 /* AccessToken.swift */; };
+		74F77DF02931355800E1CD41 /* SongSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DEF2931355800E1CD41 /* SongSearchModel.swift */; };
+		74F77DF22931356D00E1CD41 /* SongRecommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DF12931356D00E1CD41 /* SongRecommendations.swift */; };
+		74F77DF42931358900E1CD41 /* ArtistAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DF32931358900E1CD41 /* ArtistAlbums.swift */; };
+		74F77DF7293135DB00E1CD41 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DF6293135DB00E1CD41 /* DataProvider.swift */; };
+		74F77DF9293135EF00E1CD41 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DF8293135EF00E1CD41 /* APIManager.swift */; };
+		74F77DFB2931360200E1CD41 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DFA2931360200E1CD41 /* AuthManager.swift */; };
+		74F77DFD2931361F00E1CD41 /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DFC2931361F00E1CD41 /* HTTPMethods.swift */; };
+		74F77DFF2931452B00E1CD41 /* ShazamViewModelTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F77DFE2931452B00E1CD41 /* ShazamViewModelTwo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		746E089F2926D3BE00B9A076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		746E08A32926D4F000B9A076 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../../Downloads/ios-sdk-1.2.2/SpotifyiOS.framework"; sourceTree = "<group>"; };
 		746E08A52926D5F300B9A076 /* SpotifyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyController.swift; sourceTree = "<group>"; };
 		746E08AC292729D100B9A076 /* Shazamy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shazamy.entitlements; sourceTree = "<group>"; };
 		74B555AF291DB89E001F76F8 /* Shazamy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shazamy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,6 +40,19 @@
 		74B555B9291DB89F001F76F8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		74B555C1291DB8B1001F76F8 /* ShazamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamViewModel.swift; sourceTree = "<group>"; };
 		74B555C4291DB8D7001F76F8 /* ShazamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamView.swift; sourceTree = "<group>"; };
+		74F77DE529311BA100E1CD41 /* ShazamMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamMedia.swift; sourceTree = "<group>"; };
+		74F77DE72931347C00E1CD41 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
+		74F77DE9293134CA00E1CD41 /* SongSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSearchViewModel.swift; sourceTree = "<group>"; };
+		74F77DEB293134F800E1CD41 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		74F77DED2931351900E1CD41 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		74F77DEF2931355800E1CD41 /* SongSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSearchModel.swift; sourceTree = "<group>"; };
+		74F77DF12931356D00E1CD41 /* SongRecommendations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRecommendations.swift; sourceTree = "<group>"; };
+		74F77DF32931358900E1CD41 /* ArtistAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbums.swift; sourceTree = "<group>"; };
+		74F77DF6293135DB00E1CD41 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		74F77DF8293135EF00E1CD41 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		74F77DFA2931360200E1CD41 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		74F77DFC2931361F00E1CD41 /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
+		74F77DFE2931452B00E1CD41 /* ShazamViewModelTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamViewModelTwo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				746E08A92926E68A00B9A076 /* SpotifyAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,7 +69,6 @@
 		746E08A22926D4F000B9A076 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				746E08A32926D4F000B9A076 /* SpotifyiOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -72,13 +94,13 @@
 			isa = PBXGroup;
 			children = (
 				746E08AC292729D100B9A076 /* Shazamy.entitlements */,
+				74B555B2291DB89E001F76F8 /* ShazamyApp.swift */,
+				74B555B6291DB89F001F76F8 /* Assets.xcassets */,
 				746E089F2926D3BE00B9A076 /* Info.plist */,
+				74F77DF5293135CB00E1CD41 /* Helpers */,
 				74B555C6291DB9E2001F76F8 /* Models  */,
 				74B555C3291DB8CC001F76F8 /* Views */,
 				74B555C0291DB8A3001F76F8 /* ViewModels */,
-				74B555B2291DB89E001F76F8 /* ShazamyApp.swift */,
-				74B555B4291DB89E001F76F8 /* ContentView.swift */,
-				74B555B6291DB89F001F76F8 /* Assets.xcassets */,
 				74B555B8291DB89F001F76F8 /* Preview Content */,
 			);
 			path = Shazamy;
@@ -97,6 +119,9 @@
 			children = (
 				74B555C1291DB8B1001F76F8 /* ShazamViewModel.swift */,
 				746E08A52926D5F300B9A076 /* SpotifyController.swift */,
+				74F77DE9293134CA00E1CD41 /* SongSearchViewModel.swift */,
+				74F77DEB293134F800E1CD41 /* PlaylistViewModel.swift */,
+				74F77DFE2931452B00E1CD41 /* ShazamViewModelTwo.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -105,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				74B555C4291DB8D7001F76F8 /* ShazamView.swift */,
+				74B555B4291DB89E001F76F8 /* ContentView.swift */,
+				74F77DE72931347C00E1CD41 /* PlaylistView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -112,8 +139,24 @@
 		74B555C6291DB9E2001F76F8 /* Models  */ = {
 			isa = PBXGroup;
 			children = (
+				74F77DE529311BA100E1CD41 /* ShazamMedia.swift */,
+				74F77DED2931351900E1CD41 /* AccessToken.swift */,
+				74F77DEF2931355800E1CD41 /* SongSearchModel.swift */,
+				74F77DF12931356D00E1CD41 /* SongRecommendations.swift */,
+				74F77DF32931358900E1CD41 /* ArtistAlbums.swift */,
 			);
 			name = "Models ";
+			sourceTree = "<group>";
+		};
+		74F77DF5293135CB00E1CD41 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				74F77DF6293135DB00E1CD41 /* DataProvider.swift */,
+				74F77DF8293135EF00E1CD41 /* APIManager.swift */,
+				74F77DFA2931360200E1CD41 /* AuthManager.swift */,
+				74F77DFC2931361F00E1CD41 /* HTTPMethods.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,7 +176,6 @@
 			);
 			name = Shazamy;
 			packageProductDependencies = (
-				746E08A82926E68A00B9A076 /* SpotifyAPI */,
 			);
 			productName = Shazamy;
 			productReference = 74B555AF291DB89E001F76F8 /* Shazamy.app */;
@@ -164,7 +206,6 @@
 			);
 			mainGroup = 74B555A6291DB89E001F76F8;
 			packageReferences = (
-				746E08A72926E68A00B9A076 /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
 			);
 			productRefGroup = 74B555B0291DB89E001F76F8 /* Products */;
 			projectDirPath = "";
@@ -192,11 +233,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74F77DEC293134F800E1CD41 /* PlaylistViewModel.swift in Sources */,
+				74F77DFF2931452B00E1CD41 /* ShazamViewModelTwo.swift in Sources */,
 				74B555B5291DB89E001F76F8 /* ContentView.swift in Sources */,
+				74F77DF02931355800E1CD41 /* SongSearchModel.swift in Sources */,
+				74F77DE82931347C00E1CD41 /* PlaylistView.swift in Sources */,
 				74B555C2291DB8B1001F76F8 /* ShazamViewModel.swift in Sources */,
 				74B555C5291DB8D7001F76F8 /* ShazamView.swift in Sources */,
 				74B555B3291DB89E001F76F8 /* ShazamyApp.swift in Sources */,
+				74F77DF22931356D00E1CD41 /* SongRecommendations.swift in Sources */,
+				74F77DEA293134CA00E1CD41 /* SongSearchViewModel.swift in Sources */,
+				74F77DFB2931360200E1CD41 /* AuthManager.swift in Sources */,
+				74F77DE629311BA100E1CD41 /* ShazamMedia.swift in Sources */,
+				74F77DF7293135DB00E1CD41 /* DataProvider.swift in Sources */,
 				746E08A62926D5F300B9A076 /* SpotifyController.swift in Sources */,
+				74F77DFD2931361F00E1CD41 /* HTTPMethods.swift in Sources */,
+				74F77DF9293135EF00E1CD41 /* APIManager.swift in Sources */,
+				74F77DF42931358900E1CD41 /* ArtistAlbums.swift in Sources */,
+				74F77DEE2931351900E1CD41 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,25 +469,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		746E08A72926E68A00B9A076 /* XCRemoteSwiftPackageReference "SpotifyAPI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Peter-Schorn/SpotifyAPI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		746E08A82926E68A00B9A076 /* SpotifyAPI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 746E08A72926E68A00B9A076 /* XCRemoteSwiftPackageReference "SpotifyAPI" */;
-			productName = SpotifyAPI;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 74B555A7291DB89E001F76F8 /* Project object */;
 }
