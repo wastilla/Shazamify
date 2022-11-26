@@ -60,7 +60,7 @@ struct ShazamView: View {
                     }.buttonStyle(.bordered)
                         .controlSize(.large)
                         .shadow(radius: 4)
-                    if(viewModel.shazamMedia.title != "Title..."){
+                    if(viewModel.shazamMedia.title != "Title..." && !viewModel.isRecording){
                         let query = ((viewModel.shazamMedia.title ?? "") + " " + (viewModel.shazamMedia.artistName ?? "" ))
                         NavigationLink(destination: PlaylistView(query: query)) {
                             Text("Press")

@@ -28,14 +28,14 @@ class ViewModel: NSObject, ObservableObject {
         session.delegate = self
     }
 
-    public func check(){
+    /*public func check(){
         if self.shazamMedia.title != "Title..."{
             self.found = true
         }
         else{
             self.found = false
         }
-    }
+    }*/
     private func prepareAudioRecording() throws {
         let audioSession = AVAudioSession.sharedInstance()
         try audioSession.setCategory(.record)
@@ -81,17 +81,10 @@ class ViewModel: NSObject, ObservableObject {
 
 extension ViewModel: SHSessionDelegate {
     func session(_ session: SHSession, didFind match: SHMatch) {
-        let mediaItems = match.mediaItems
+        guard let mediaItem = match.mediaItems.first else { return }
 
-        if let firstItem = mediaItems.first {
-            let _shazamMedia = ShazamMedia(title: firstItem.title, subtitle: firstItem.subtitle, artistName: firstItem.artist, albumArtURL: firstItem.artworkURL, genres: firstItem.genres)
-
-            DispatchQueue.main.async {
-                self.shazamMedia = _shazamMedia
-            }
-            
-         
+        Task {
+            self.currentItem = mediaItem
         }
-        
     }
 }
