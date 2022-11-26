@@ -9,16 +9,13 @@ import Foundation
 import SwiftUI
 
 struct ShazamView: View {
-    @StateObject private var viewModel = ShazamViewModelTwo()
+    @StateObject private var viewModel = ViewModel()
     @State private var change: Bool = false
     
-   
- 
     var body: some View {
-     
         NavigationView {
             ZStack {
-                AsyncImage(url: viewModel.shazamMedia.albumArtURL) { image in
+                AsyncImage(url: viewModel.currentItem?.artworkURL) { image in
                     image
                         .resizable()
                         .scaledToFill()
@@ -30,7 +27,7 @@ struct ShazamView: View {
                 }
                 VStack(alignment: .center) {
                     Spacer()
-                    AsyncImage(url: viewModel.shazamMedia.albumArtURL) { image in
+                    AsyncImage(url: viewModel.currentItem?.artworkURL) { image in
                         image
                             .resizable()
                             .frame(width: 300, height: 300)
@@ -44,28 +41,47 @@ struct ShazamView: View {
                             .redacted(reason: .privacy)
                     }
                     VStack(alignment: .center) {
-                        Text(viewModel.shazamMedia.title ?? "Title")
+                        Text(viewModel.currentItem?.title ?? "Press the Button below to Shazam")
                             .font(.title)
                             .fontWeight(.semibold)
                             .multilineTextAlignment(.center)
-                        Text(viewModel.shazamMedia.artistName ?? "Artist Name")
+                        Text(viewModel.currentItem?.artist ?? "")
                             .font(.title2)
                             .fontWeight(.medium)
                             .multilineTextAlignment(.center)
                     }.padding()
                     Spacer()
-                    Button(action: { viewModel.startOrEndListening() }) {
-                        Text(viewModel.isRecording ? "Listening..." : "Start Shazaming")
-                            .frame(width: 300)
-                    }.buttonStyle(.bordered)
-                        .controlSize(.large)
-                        .shadow(radius: 4)
-                    if(viewModel.shazamMedia.title != "Title..." && !viewModel.isRecording){
-                        let query = ((viewModel.shazamMedia.title ?? "") + " " + (viewModel.shazamMedia.artistName ?? "" ))
-                        NavigationLink(destination: PlaylistView(query: query)) {
-                            Text("Press")
+                    
+                    if viewModel.shazaming == true {
+                        Button("Stop Shazaming") {
+                            viewModel.stopRecognition()
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.red)
+                    } else {
+                        Button("Start Shazaming") {
+                            viewModel.startRecognition()
+                        }
+                        .buttonStyle(.borderedProminent)
+                        if(viewModel.currentItem?.artist != "" && !viewModel.shazaming){
+                            let query = ((viewModel.currentItem?.title ?? "") + " " + (viewModel.currentItem?.artist ?? ""))
+                            NavigationLink(destination: PlaylistView(query: query)) {
+                                Text("Press")
+                            }
                         }
                     }
+                    /* Button(action: { viewModel.startOrEndListening() }) {
+                         Text(viewModel.isRecording ? "Listening..." : "Start Shazaming")
+                             .frame(width: 300)
+                     }.buttonStyle(.bordered)
+                         .controlSize(.large)
+                         .shadow(radius: 4)
+                     if(viewModel.shazamMedia.title != "Title..." && !viewModel.isRecording){
+                         let query = ((viewModel.shazamMedia.title ?? "") + " " + (viewModel.shazamMedia.artistName ?? "" ))
+                         NavigationLink(destination: PlaylistView(query: query)) {
+                             Text("Press")
+                         }
+                     } */
                 }
             }
         }
