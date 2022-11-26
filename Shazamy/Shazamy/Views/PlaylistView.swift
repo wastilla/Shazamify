@@ -13,6 +13,8 @@ struct PlaylistView: View {
     // get shared data async from view model
     @ObservedObject var viewModel: AlbumListViewModel
     @ObservedObject var searchViewModel: SongSearchViewModel
+  
+    @State var scale = 0.5
     
     let query: String
     
@@ -26,43 +28,45 @@ struct PlaylistView: View {
         NavigationStack {
             let song = searchViewModel.getSong()
             VStack {
-                List(Array(song), id: \.self) { track in
-                    // let artist = track.artists.name
-                    if let name = track.name, let artist = track.artists?[0].name {
-                        HStack {
-                            Text(artist)
-                            Text(name).font(.headline)
+                ForEach(Array(song), id: \.self) { track in
+                    Text(track.artists?[0].name ?? "")
+                    Text(track.name ?? "")
+                }
+               
+                let recs = viewModel.getSongList()
+                let baseAnimation = Animation.easeInOut(duration: 1)
+                ScrollView {
+                    ForEach(Array(recs), id: \.self) { track in
+                        if let name = track.name, let artist = track.artists?[0].name {
+                            PlaylistItemView(songTitle: name, artistName: artist)
+                                .scaleEffect(scale)
+                                .onAppear {
+                                    withAnimation(baseAnimation) {
+                                        scale = 1.0
+                                    }
+                                }
                         }
                     }
                 }
-                VStack {
-                    let recs = viewModel.getSongList()
-                    
-                    List(Array(recs), id: \.self) { track in
-                        // let artist = track.artists.name
-                        if let name = track.name, let artist = track.artists?[0].name, let url = track.externalUrls?.spotify ?? "none" {
-                            HStack {
-                                Text(artist)
-                                Text(name).font(.headline)
-                                Text(url)
-                            }
-                        }
-                    }
-                    Button("Press") {
-                        viewModel.makePlaylist(artistID: song.first?.artists?[0].id ?? "", songID: song.first?.id ?? "")
-                    }
                 
-                    .onAppear {
-                        // fire the data transactions
-                        viewModel.getData()
-                    }
+                Button("Generate Playlist") {
+                    viewModel.makePlaylist(artistID: song.first?.artists?[0].id ?? "", songID: song.first?.id ?? "")
+                }
+                .padding()
+                .foregroundColor(.white)
+                .background(Color("SpotifyGreen").opacity(0.9))
+                .bold()
+                .cornerRadius(15)
+                
+                .onAppear {
+                    // fire the data transactions
+                    viewModel.getData()
                 }
             }
             .onAppear {
                 searchViewModel.getData()
                 searchViewModel.makeSearch(query: self.query)
             }
-           
         }
     }
 }

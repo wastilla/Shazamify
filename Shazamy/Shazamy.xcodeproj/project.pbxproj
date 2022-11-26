@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		746E08A62926D5F300B9A076 /* SpotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E08A52926D5F300B9A076 /* SpotifyController.swift */; };
+		74B07B422931B23E0014ABE9 /* PlaylistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B07B412931B23E0014ABE9 /* PlaylistItemView.swift */; };
 		74B555B3291DB89E001F76F8 /* ShazamyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B555B2291DB89E001F76F8 /* ShazamyApp.swift */; };
 		74B555B5291DB89E001F76F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B555B4291DB89E001F76F8 /* ContentView.swift */; };
 		74B555B7291DB89F001F76F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B555B6291DB89F001F76F8 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		746E089F2926D3BE00B9A076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		746E08A52926D5F300B9A076 /* SpotifyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyController.swift; sourceTree = "<group>"; };
 		746E08AC292729D100B9A076 /* Shazamy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shazamy.entitlements; sourceTree = "<group>"; };
+		74B07B412931B23E0014ABE9 /* PlaylistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemView.swift; sourceTree = "<group>"; };
 		74B555AF291DB89E001F76F8 /* Shazamy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shazamy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B555B2291DB89E001F76F8 /* ShazamyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamyApp.swift; sourceTree = "<group>"; };
 		74B555B4291DB89E001F76F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				74B555C4291DB8D7001F76F8 /* ShazamView.swift */,
 				74B555B4291DB89E001F76F8 /* ContentView.swift */,
 				74F77DE72931347C00E1CD41 /* PlaylistView.swift */,
+				74B07B412931B23E0014ABE9 /* PlaylistItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				74F77DEA293134CA00E1CD41 /* SongSearchViewModel.swift in Sources */,
 				74F77DFB2931360200E1CD41 /* AuthManager.swift in Sources */,
 				74F77DE629311BA100E1CD41 /* ShazamMedia.swift in Sources */,
+				74B07B422931B23E0014ABE9 /* PlaylistItemView.swift in Sources */,
 				74F77DF7293135DB00E1CD41 /* DataProvider.swift in Sources */,
 				746E08A62926D5F300B9A076 /* SpotifyController.swift in Sources */,
 				74F77DFD2931361F00E1CD41 /* HTTPMethods.swift in Sources */,
