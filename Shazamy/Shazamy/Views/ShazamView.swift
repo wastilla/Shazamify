@@ -10,8 +10,11 @@ import SwiftUI
 
 struct ShazamView: View {
     @StateObject private var viewModel = ViewModel()
+
     @State private var change: Bool = false
-    
+    @State private var scale: Double = 0.5
+    @State private var isAnimating: Bool = true
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -23,10 +26,11 @@ struct ShazamView: View {
                         .opacity(0.5)
                         .edgesIgnoringSafeArea(.all)
                 } placeholder: {
-                    EmptyView()
+                    Color.black
+                        .ignoresSafeArea()
                 }
                 VStack(alignment: .center) {
-                    Spacer()
+                   
                     AsyncImage(url: viewModel.currentItem?.artworkURL) { image in
                         image
                             .resizable()
@@ -35,11 +39,12 @@ struct ShazamView: View {
                             .cornerRadius(10)
                     } placeholder: {
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.purple.opacity(0.5))
+                            .fill(Color("SpotifyGreen").opacity(1))
                             .frame(width: 300, height: 300)
                             .cornerRadius(10)
                             .redacted(reason: .privacy)
                     }
+                    .padding(.top, 150)
                     VStack(alignment: .center) {
                         Text(viewModel.currentItem?.title ?? "Press the Button below to Shazam")
                             .font(.title)
@@ -50,38 +55,59 @@ struct ShazamView: View {
                             .fontWeight(.medium)
                             .multilineTextAlignment(.center)
                     }.padding()
+                     
                     Spacer()
-                    
+
                     if viewModel.shazaming == true {
-                        Button("Stop Shazaming") {
+                        Button {
                             viewModel.stopRecognition()
+                        } label: {
+                            Text("Stop Recognition")
+                                .padding()
+                                .bold()
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.red)
+                        .foregroundColor(.white)
+                        .background(.red)
+                        .cornerRadius(15)
+
                     } else {
-                        Button("Start Shazaming") {
-                            viewModel.startRecognition()
-                        }
-                        .buttonStyle(.borderedProminent)
-                        if(viewModel.currentItem?.artist != "" && !viewModel.shazaming){
-                            let query = ((viewModel.currentItem?.title ?? "") + " " + (viewModel.currentItem?.artist ?? ""))
-                            NavigationLink(destination: PlaylistView(query: query)) {
-                                Text("Press")
+                        HStack {
+                            Button {
+                                viewModel.startRecognition()
+                            } label: {
+                                Text("Start Shazaming")
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .bold()
+                            }
+                            .background(Color("SpotifyGreen").opacity(1))
+                            .cornerRadius(15)
+                            // .buttonStyle(.borderedProminent)
+                            if viewModel.currentItem?.artist != nil, !viewModel.shazaming {
+                                let query = ((viewModel.currentItem?.title ?? "") + " " + (viewModel.currentItem?.artist ?? ""))
+                                NavigationLink(destination: PlaylistView(query: query)) {
+                                    Text("Shazamify")
+                                        .padding([.leading, .trailing], 22)
+                                        .bold()
+                                        .padding()
+                                        .background(.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(15)
+                                }
                             }
                         }
+                        .toolbar {
+                            // 1
+                            ToolbarItem() {
+                                Image("ShazamifyLogo")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .padding(.top, 80)
+                            }
+                            
+                        }
+
                     }
-                    /* Button(action: { viewModel.startOrEndListening() }) {
-                         Text(viewModel.isRecording ? "Listening..." : "Start Shazaming")
-                             .frame(width: 300)
-                     }.buttonStyle(.bordered)
-                         .controlSize(.large)
-                         .shadow(radius: 4)
-                     if(viewModel.shazamMedia.title != "Title..." && !viewModel.isRecording){
-                         let query = ((viewModel.shazamMedia.title ?? "") + " " + (viewModel.shazamMedia.artistName ?? "" ))
-                         NavigationLink(destination: PlaylistView(query: query)) {
-                             Text("Press")
-                         }
-                     } */
                 }
             }
         }

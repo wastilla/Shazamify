@@ -60,7 +60,7 @@ struct Album: Decodable, Hashable {
     let externalUrls: ExternalUrls?
     let href: String?
     let id: String?
-    let images: [Image]?
+    let images: [SongImage]?
     let name, type, uri: String?
 
     enum CodingKeys: String, CodingKey {
@@ -74,7 +74,7 @@ struct Album: Decodable, Hashable {
 // MARK: - ExternalUrls
 
 // MARK: - Image
-struct Image: Decodable, Hashable {
+struct SongImage: Decodable, Hashable {
     let height: Int?
     let url: String?
     let width: Int?
