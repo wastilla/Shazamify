@@ -97,7 +97,6 @@ struct ShazamView: View {
                             }
                         }
                         .toolbar {
-                            // 1
                             ToolbarItem() {
                                 Image("ShazamifyLogo")
                                     .resizable()
