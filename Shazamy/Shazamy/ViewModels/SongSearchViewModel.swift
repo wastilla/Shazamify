@@ -18,6 +18,8 @@ class SongSearchViewModel: ObservableObject{
     
     init(query: String) {
         //DataProvider.shared.findSong(Query: query)
+        self.getData()
+        self.makeSearch(query: query)
     }
     
     func getData() {

@@ -23,6 +23,7 @@ class AlbumListViewModel: ObservableObject {
         //artistID: 3qiHUAX7zY4Qnjx8TNUzVx
         //songID: 7BbaIYAdi3pg4MGl6PHwPv
         //seed genres:
+        self.getData()
        
     }
     

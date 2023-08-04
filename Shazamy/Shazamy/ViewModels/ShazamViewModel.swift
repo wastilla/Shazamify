@@ -63,7 +63,6 @@ class ViewModel: NSObject, ObservableObject {
                 stopRecognition()
                 return
             }
-
             try prepareAudioRecording()
             generateSignature()
             try startAudioRecording()

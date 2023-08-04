@@ -44,8 +44,8 @@ struct PlaylistView: View {
                     let baseAnimation = Animation.easeInOut(duration: 1)
                     ScrollView {
                         ForEach(Array(recs), id: \.self) { track in
-                            if let name = track.name, let artist = track.artists?[0].name, let url = "https://open.spotify.com/track/" + (track.id ?? "") {
-                                PlaylistItemView(songTitle: name, artistName: artist, songURL: url)
+                            if let name = track.name, let artist = track.artists?[0].name, let url = track.id {
+                                PlaylistItemView(songTitle: name, artistName: artist, songURL: "https://open.spotify.com/track/" + url)
                                     .scaleEffect(scale)
                                     .onAppear {
                                         withAnimation(baseAnimation) {
@@ -64,16 +64,8 @@ struct PlaylistView: View {
                     .background(Color("SpotifyGreen").opacity(0.9))
                     .bold()
                     .cornerRadius(15)
-                    
-                    .onAppear {
-                        // fire the data transactions
-                        viewModel.getData()
-                    }
                 }
-                .onAppear {
-                    searchViewModel.getData()
-                    searchViewModel.makeSearch(query: self.query)
-                }
+         
             }
             .navigationBarHidden(true)
         }
