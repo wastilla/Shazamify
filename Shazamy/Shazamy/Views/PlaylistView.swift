@@ -29,7 +29,7 @@ struct PlaylistView: View {
             ZStack {
                 Color.black
                     .ignoresSafeArea()
-                let song = searchViewModel.getSong()
+                let song = self.searchViewModel.songs
                 VStack {
                     ForEach(Array(song), id: \.self) { track in
                         Text(track.name ?? "")
@@ -40,7 +40,7 @@ struct PlaylistView: View {
                     }
                     .foregroundColor(.white)
                    
-                    let recs = viewModel.getSongList()
+                    let recs = viewModel.songRecs
                     let baseAnimation = Animation.easeInOut(duration: 1)
                     ScrollView {
                         ForEach(Array(recs), id: \.self) { track in
@@ -64,6 +64,7 @@ struct PlaylistView: View {
                     .background(Color("SpotifyGreen").opacity(0.9))
                     .bold()
                     .cornerRadius(15)
+
                 }
          
             }

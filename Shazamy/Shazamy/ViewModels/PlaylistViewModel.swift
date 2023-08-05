@@ -13,10 +13,10 @@ class AlbumListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     // async publishable data.
-    @Published private var albumList: Array<Item> = []
-    @Published private var albumImageUrls: Array<URL> = []
+    @Published var albumList: Array<Item> = []
+    @Published var albumImageUrls: Array<URL> = []
     
-    @Published private var songRecs: Array<Track> = []
+    @Published var songRecs: Array<Track> = []
     
     init() {
         // set artist id for request

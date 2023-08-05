@@ -13,7 +13,7 @@ class SongSearchViewModel: ObservableObject{
     
     private var cancellables = Set<AnyCancellable>()
     
-    @Published private var songs: Array<Items> = []
+    @Published var songs: Array<Items> = []
     
     
     init(query: String) {
@@ -23,7 +23,7 @@ class SongSearchViewModel: ObservableObject{
     }
     
     func getData() {
-        // subscribe
+        // subscribe to songSearchSubject
         DataProvider.shared.songSearchSubject
             .sink(receiveValue: { [weak self] items in
                 guard let self = self else { return }
@@ -36,6 +36,7 @@ class SongSearchViewModel: ObservableObject{
     }
     
     func makeSearch(query: String){
+        // Call find song to send data through songSearchSubject
         DataProvider.shared.findSong(Query: query)
     }
 }
