@@ -11,7 +11,7 @@ import SwiftUI
 
 struct PlaylistView: View {
     // get shared data async from view model
-    @ObservedObject var viewModel: AlbumListViewModel
+    @ObservedObject var viewModel: PlaylistViewModel
     @ObservedObject var searchViewModel: SongSearchViewModel
   
     @State var scale = 0.5
@@ -21,7 +21,7 @@ struct PlaylistView: View {
     init(query: String) {
         self.query = query
         self.searchViewModel = SongSearchViewModel(query: query)
-        self.viewModel = AlbumListViewModel()
+        self.viewModel = PlaylistViewModel()
     }
     
     var body: some View {

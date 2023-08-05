@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class AlbumListViewModel: ObservableObject {
+class PlaylistViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     
