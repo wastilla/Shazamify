@@ -10,7 +10,7 @@ import Foundation
 
 class AuthManager {
     static let shared = AuthManager()
-    
+
     private let authKey: String = {
         // replace this value with your keys
         // example auth key -> "1A2B3C4D5E:6F7G8H9I10J"
@@ -30,10 +30,25 @@ class AuthManager {
         components.path = "/api/token"
         return components.url
     }()
+    
+    public let signInURL: URL? = {
+        let clientID = "806bb8fe25d34aa084a29444d21ae0ba"
+        let clientSecret = "3c2693a110304029938dc77b67217115"
+        let scopes = "user-read-private"
+        let redirectURI = "https://www.google.com/"
+        let baseURL = "https://accounts.spotify.com/authorize/"
+        let fullURL = "\(baseURL)?response_type=code&client_id=\(clientID)&redirect_uri=\(redirectURI)"
+        return URL(string: fullURL)
+        
+    }()
        
     private init() {}
+    
+    func getSignInURL() -> URL{
+        return signInURL!
+    }
        
-    /// Request method for access token.
+    /// Request method for access token for client credentials.
     func getAccessToken() -> AnyPublisher<String, Error> {
         // strong token url
         guard let url = tokenURL else {
@@ -74,5 +89,9 @@ class AuthManager {
             // publisher spiral for AnyPublisher<String, Error>
             .eraseToAnyPublisher()
     }
+    
+//    func exchangeCodeForToken() -> String {
+//        guard let url = URL(string: self.)
+//    }
 }
 

@@ -22,6 +22,11 @@ class APIManager<T: Decodable> {
         return APIManager<T>()
     }
     
+    enum Response {
+        case success
+        case failure
+    }
+    
     private init() {}
     
     /// Request the API data with parameters.
@@ -39,10 +44,15 @@ class APIManager<T: Decodable> {
                 // request model setups
                 var urlRequest = URLRequest(url: url)
                 urlRequest.httpMethod = model.method.rawValue
+                print(model.method)
                 switch model.method {
                 case .get:
                     // add 'Bearer ' to the token key for request headers
                     urlRequest.allHTTPHeaderFields = ["Authorization": "Bearer \(tokenKey)"]
+                    break
+                case .post:
+                    urlRequest.allHTTPHeaderFields = ["Authorization": "Bearer \(tokenKey)"]
+                    break
                 default:
                     break
                 }

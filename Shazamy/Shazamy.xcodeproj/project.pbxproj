@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		746E08A62926D5F300B9A076 /* SpotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E08A52926D5F300B9A076 /* SpotifyController.swift */; };
+		74728B8D2A8AC0F000304C41 /* AuthWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74728B8C2A8AC0F000304C41 /* AuthWebView.swift */; };
+		74728B8F2A8AC78700304C41 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74728B8E2A8AC78700304C41 /* WelcomeView.swift */; };
+		74728B912A8FF2AF00304C41 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74728B902A8FF2AF00304C41 /* AuthViewModel.swift */; };
+		74AB9DF92A818D8E00114AC9 /* AddToQueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AB9DF82A818D8E00114AC9 /* AddToQueueModel.swift */; };
 		74B07B422931B23E0014ABE9 /* PlaylistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B07B412931B23E0014ABE9 /* PlaylistItemView.swift */; };
 		74B555B3291DB89E001F76F8 /* ShazamyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B555B2291DB89E001F76F8 /* ShazamyApp.swift */; };
 		74B555B5291DB89E001F76F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B555B4291DB89E001F76F8 /* ContentView.swift */; };
@@ -34,6 +38,10 @@
 		746E089F2926D3BE00B9A076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		746E08A52926D5F300B9A076 /* SpotifyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyController.swift; sourceTree = "<group>"; };
 		746E08AC292729D100B9A076 /* Shazamy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shazamy.entitlements; sourceTree = "<group>"; };
+		74728B8C2A8AC0F000304C41 /* AuthWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebView.swift; sourceTree = "<group>"; };
+		74728B8E2A8AC78700304C41 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		74728B902A8FF2AF00304C41 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		74AB9DF82A818D8E00114AC9 /* AddToQueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToQueueModel.swift; sourceTree = "<group>"; };
 		74B07B412931B23E0014ABE9 /* PlaylistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemView.swift; sourceTree = "<group>"; };
 		74B555AF291DB89E001F76F8 /* Shazamy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shazamy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B555B2291DB89E001F76F8 /* ShazamyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamyApp.swift; sourceTree = "<group>"; };
@@ -124,6 +132,7 @@
 				74F77DE9293134CA00E1CD41 /* SongSearchViewModel.swift */,
 				74F77DEB293134F800E1CD41 /* PlaylistViewModel.swift */,
 				74F77DFE2931452B00E1CD41 /* ShazamViewModelTwo.swift */,
+				74728B902A8FF2AF00304C41 /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -135,6 +144,8 @@
 				74B555B4291DB89E001F76F8 /* ContentView.swift */,
 				74F77DE72931347C00E1CD41 /* PlaylistView.swift */,
 				74B07B412931B23E0014ABE9 /* PlaylistItemView.swift */,
+				74728B8C2A8AC0F000304C41 /* AuthWebView.swift */,
+				74728B8E2A8AC78700304C41 /* WelcomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,6 +158,7 @@
 				74F77DEF2931355800E1CD41 /* SongSearchModel.swift */,
 				74F77DF12931356D00E1CD41 /* SongRecommendations.swift */,
 				74F77DF32931358900E1CD41 /* ArtistAlbums.swift */,
+				74AB9DF82A818D8E00114AC9 /* AddToQueueModel.swift */,
 			);
 			name = "Models ";
 			sourceTree = "<group>";
@@ -239,6 +251,7 @@
 				74F77DEC293134F800E1CD41 /* PlaylistViewModel.swift in Sources */,
 				74F77DFF2931452B00E1CD41 /* ShazamViewModelTwo.swift in Sources */,
 				74B555B5291DB89E001F76F8 /* ContentView.swift in Sources */,
+				74728B8D2A8AC0F000304C41 /* AuthWebView.swift in Sources */,
 				74F77DF02931355800E1CD41 /* SongSearchModel.swift in Sources */,
 				74F77DE82931347C00E1CD41 /* PlaylistView.swift in Sources */,
 				74B555C2291DB8B1001F76F8 /* ShazamViewModel.swift in Sources */,
@@ -252,8 +265,11 @@
 				74F77DF7293135DB00E1CD41 /* DataProvider.swift in Sources */,
 				746E08A62926D5F300B9A076 /* SpotifyController.swift in Sources */,
 				74F77DFD2931361F00E1CD41 /* HTTPMethods.swift in Sources */,
+				74728B912A8FF2AF00304C41 /* AuthViewModel.swift in Sources */,
+				74728B8F2A8AC78700304C41 /* WelcomeView.swift in Sources */,
 				74F77DF9293135EF00E1CD41 /* APIManager.swift in Sources */,
 				74F77DF42931358900E1CD41 /* ArtistAlbums.swift in Sources */,
+				74AB9DF92A818D8E00114AC9 /* AddToQueueModel.swift in Sources */,
 				74F77DEE2931351900E1CD41 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

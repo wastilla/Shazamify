@@ -20,6 +20,8 @@ class DataProvider {
     
     var songSearchSubject = PassthroughSubject<[Items], Never>()
     
+    var addToQueueSubject =  PassthroughSubject<Bool, Never>()
+    
     private init() {}
 }
 
@@ -90,6 +92,28 @@ extension DataProvider {
                 guard let items = results.tracks?.items else { return }
                 // publish the data
                 self.songSearchSubject.send(items)
+            }).store(in: &self.cancellables)
+    }
+    
+    func addtoQueue() {
+        //queue?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
+        let url = URL(string: "https://api.spotify.com/v1/me/player/next")
+        
+        let model = APIManager<AddToQueueModel>.RequestModel(url: url, method: .post)
+        
+        APIManager.shared.request(with: model)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error)
+                }
+            }, receiveValue: { results in
+                // successful request
+               // guard let items = results else { return }
+                // publish the data
+                self.addToQueueSubject.send(true)
             }).store(in: &self.cancellables)
     }
 }
