@@ -8,10 +8,12 @@
 import Combine
 import Foundation
 
+
 class DataProvider {
     static let shared = DataProvider()
     
     private var cancellables = Set<AnyCancellable>()
+    
     
     // Subscribers
     var artistAlbumsSubject = PassthroughSubject<[Item], Never>()
@@ -95,24 +97,26 @@ extension DataProvider {
             }).store(in: &self.cancellables)
     }
     
-    func addtoQueue() {
+    func addtoQueue(code: String) {
         //queue?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
-        let url = URL(string: "https://api.spotify.com/v1/me/player/next")
+        let url = URL(string: "https://api.spotify.com/v1/me/player/queue?uri=spotify%3Atrack%3A4iV5W9uYEdYUVa79Axb7Rh")
         
         let model = APIManager<AddToQueueModel>.RequestModel(url: url, method: .post)
         
-        APIManager.shared.request(with: model)
+        APIManager.shared.requestWithCode(with: model, code: code )
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
                     break
                 case .failure(let error):
+                    print("HERERERLEJL")
                     print(error)
                 }
             }, receiveValue: { results in
                 // successful request
                // guard let items = results else { return }
                 // publish the data
+                print("DONE")
                 self.addToQueueSubject.send(true)
             }).store(in: &self.cancellables)
     }

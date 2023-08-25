@@ -37,7 +37,7 @@ class AuthManager {
         let scopes = "user-read-private"
         let redirectURI = "https://www.google.com/"
         let baseURL = "https://accounts.spotify.com/authorize/"
-        let fullURL = "\(baseURL)?response_type=code&client_id=\(clientID)&redirect_uri=\(redirectURI)"
+        let fullURL = "\(baseURL)?response_type=code&client_id=\(clientID)&scope=\(scopes)&redirect_uri=\(redirectURI)"
         return URL(string: fullURL)
         
     }()
@@ -90,8 +90,60 @@ class AuthManager {
             .eraseToAnyPublisher()
     }
     
-//    func exchangeCodeForToken() -> String {
-//        guard let url = URL(string: self.)
-//    }
+    func exchangeCodeForToken(code: String) -> AnyPublisher<String, Error>{
+        guard let url = tokenURL else {
+            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+        }
+        // url request setups
+        var urlRequest = URLRequest(url: url)
+        
+        urlRequest.allHTTPHeaderFields = [
+            "Authorization": authKey,
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        // add query items for request body
+        var requestBody = URLComponents()
+        requestBody.queryItems = [
+            URLQueryItem(name: "grant_type", value: "authorization_code"),
+            URLQueryItem(name: "code", value: code),
+            URLQueryItem(name: "redirect_uri", value: "https://www.google.com/")
+        ]
+        
+        urlRequest.httpBody = requestBody.query?.data(using: .utf8)
+        urlRequest.httpMethod = HTTPMethods.post.rawValue
+        
+        return URLSession.shared
+            .dataTaskPublisher(for: urlRequest)
+            .tryMap { data, response in
+                // throw error when bad server response is received
+                print(data)
+                print(response)
+                guard let httpResponse = response as? HTTPURLResponse, 200 ..< 300 ~= httpResponse.statusCode else {
+                    throw URLError(.badServerResponse)
+                }
+                return data
+            }
+            // decode the data with AccessToken decodable model
+            .decode(type: AuthResponse.self, decoder: JSONDecoder())
+            // reinforce for decoded data
+            .map { accessToken -> String in
+                print("Auth Manager AccessToken: \(accessToken)")
+                guard let token = accessToken.access_token else {
+                    print("The access token is not fetched.")
+                    return ""
+                }
+
+                guard let refreshToken = accessToken.refresh_token else {
+                    print("The refresh token is not fetched.")
+                    return ""
+                }
+//                print("T: \(refreshToken)")
+                return token
+            }
+            // main thread transactions
+            .receive(on: RunLoop.main)
+            // publisher spiral for AnyPublisher<String, Error>
+            .eraseToAnyPublisher()
+    }
 }
 

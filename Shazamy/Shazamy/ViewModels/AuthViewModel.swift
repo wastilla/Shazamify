@@ -13,4 +13,8 @@ class AuthViewModel: ObservableObject {
     func printUrl(){
         print(url)
     }
+    
+//    func fetchCode(code: String) -> String{
+//        return AuthManager.shared.exchangeCodeForToken(code: code)
+//    }
 }

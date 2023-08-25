@@ -5,32 +5,8 @@
 //  Created by will astilla on 8/14/23.
 //
 
-//import Foundation
-//import UIKit
-//import WebKit
-//import SwiftUI
-//
-//struct AuthWebView: UIViewRepresentable {
-//    let url: URL
-//
-//    func makeUIView(context: Context) -> WKWebView {
-//        let preferences = WKWebpagePreferences()
-//        preferences.allowsContentJavaScript = true
-//
-//        let config = WKWebViewConfiguration()
-//        config.defaultWebpagePreferences = preferences
-//
-//        let webview = WKWebView(frame: .infinite, configuration: config)
-//        return webview
-//    }
-//
-//    func updateUIView(_ webView: WKWebView, context: Context) {
-//        let request = URLRequest(url: url)
-//        webView.load(request)
-//    }
-//}
-
 import SwiftUI
+import Combine
 import WebKit
 
 struct AuthWebView: UIViewRepresentable {
@@ -58,21 +34,38 @@ struct AuthWebView: UIViewRepresentable {
     
     class Coordinator: NSObject, WKNavigationDelegate {
             var parent: AuthWebView
+            
+            @AppStorage("userCode") var code: String = ""
+        
+            private var cancellables = Set<AnyCancellable>()
 
             init(_ parent: AuthWebView) {
                 self.parent = parent
             }
 
         func webView(_ webView: WKWebView, didStartProvisionalNavigation naviagation: WKNavigation!){
-                print("here")
             let component = URLComponents(string: webView.url!.absoluteString)
-            print(webView.url?.absoluteString)
-            print(component?.queryItems?.first?.name)
                 guard let code = component?.queryItems?.first(where: { $0.name == "code"})?.value else {
+                    print("NO CODE")
                     return
                 }
-            
-                print("code: \(code)")
+            self.code = code
+            AuthManager.shared.exchangeCodeForToken(code: code)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print("FAIL")
+                        print(error)
+                    }
+                }, receiveValue: { token in
+                    // successful request
+                    print("TOKEN: \(token)")
+                    // publish the data
+                    
+                }).store(in: &self.cancellables)
+                
             }
         }
     
