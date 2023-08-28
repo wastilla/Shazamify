@@ -7,8 +7,14 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 class AuthManager {
+    @AppStorage ("token") var token: String = ""
+    @AppStorage ("expiresIn") var expiresIn: Int = 0
+    @AppStorage ("refreshToken") var refreshToken: String = ""
+    @AppStorage ("code") var code: String = ""
+    
     static let shared = AuthManager()
 
     private let authKey: String = {
@@ -34,7 +40,7 @@ class AuthManager {
     public let signInURL: URL? = {
         let clientID = "806bb8fe25d34aa084a29444d21ae0ba"
         let clientSecret = "3c2693a110304029938dc77b67217115"
-        let scopes = "user-read-private"
+        let scopes = "user-modify-playback-state"
         let redirectURI = "https://www.google.com/"
         let baseURL = "https://accounts.spotify.com/authorize/"
         let fullURL = "\(baseURL)?response_type=code&client_id=\(clientID)&scope=\(scopes)&redirect_uri=\(redirectURI)"
@@ -132,11 +138,21 @@ class AuthManager {
                     print("The access token is not fetched.")
                     return ""
                 }
+                self.token = token
 
                 guard let refreshToken = accessToken.refresh_token else {
                     print("The refresh token is not fetched.")
                     return ""
                 }
+                self.refreshToken = refreshToken
+                
+                guard let expiresIn = accessToken.expires_in else {
+                    print("Expires in not fetched")
+                    return ""
+                }
+                
+                self.expiresIn = expiresIn
+                
 //                print("T: \(refreshToken)")
                 return token
             }
@@ -145,5 +161,13 @@ class AuthManager {
             // publisher spiral for AnyPublisher<String, Error>
             .eraseToAnyPublisher()
     }
+    
+//    func exchangeCodeForTokenIfNeeded(code: String) -> AnyPublisher<String, Error>{
+//        if self.token != "" {
+//           
+//        }
+//        return exchangeCodeForToken(code: code)
+//        
+//    }
 }
 

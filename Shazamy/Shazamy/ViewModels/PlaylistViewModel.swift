@@ -64,8 +64,7 @@ class PlaylistViewModel: ObservableObject {
     }
     
     func addToQueue(){
-        print(code)
-        DataProvider.shared.addtoQueue(code: self.code)
+        DataProvider.shared.addtoQueue()
     }
     
     // return albumImageList to view

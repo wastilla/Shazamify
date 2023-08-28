@@ -97,13 +97,14 @@ extension DataProvider {
             }).store(in: &self.cancellables)
     }
     
-    func addtoQueue(code: String) {
+    func addtoQueue() {
         //queue?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
-        let url = URL(string: "https://api.spotify.com/v1/me/player/queue?uri=spotify%3Atrack%3A4iV5W9uYEdYUVa79Axb7Rh")
-        
+//        let url = URL(string: "https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh")
+//        let url = URL(string:"https://api.spotify.com/v1/me/player/next")
+        let url = URL(string:"https://api.spotify.com/v1/me/player/pause")
         let model = APIManager<AddToQueueModel>.RequestModel(url: url, method: .post)
         
-        APIManager.shared.requestWithCode(with: model, code: code )
+        APIManager.shared.queueRequest(with: model)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
