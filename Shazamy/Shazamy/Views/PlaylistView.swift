@@ -64,6 +64,15 @@ struct PlaylistView: View {
                     .background(Color("SpotifyGreen").opacity(0.9))
                     .bold()
                     .cornerRadius(15)
+                    
+                    Button("Test") {
+                        viewModel.addToQueue()
+                    }
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color("SpotifyGreen").opacity(0.9))
+                    .bold()
+                    .cornerRadius(15)
 
                 }
          
