@@ -12,7 +12,7 @@ import Combine
 import ShazamKit
 
 @MainActor
-class ViewModel: NSObject, ObservableObject {
+class ShazamViewModel: NSObject, ObservableObject {
     @Published var currentItem: SHMediaItem? = nil
     @Published var shazamMedia: ShazamMedia = .init(title: "Title...", subtitle: "Subtitle...", artistName: "Artist Name...", albumArtURL: URL(string: "https://google.com"), genres: ["Pop"])
 
@@ -53,6 +53,7 @@ class ViewModel: NSObject, ObservableObject {
 
     private func startAudioRecording() throws {
         self.found = false
+        self.currentItem = nil
         try audioEngine.start()
         shazaming = true
     }
@@ -76,14 +77,20 @@ class ViewModel: NSObject, ObservableObject {
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: .zero)
     }
+    
+    public func resetSong() {
+        self.found = false
+    }
 }
 
-extension ViewModel: SHSessionDelegate {
+extension ShazamViewModel: SHSessionDelegate {
     func session(_ session: SHSession, didFind match: SHMatch) {
         guard let mediaItem = match.mediaItems.first else { return }
 
         Task {
+            self.found = true
             self.currentItem = mediaItem
+            self.stopRecognition()
         }
     }
 }
