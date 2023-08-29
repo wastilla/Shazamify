@@ -8,17 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("userCode") var code: String = ""
-    
     var body: some View {
         VStack {
-            if(code == ""){
-                WelcomeView()
-                    .ignoresSafeArea()
-            } else {
-                ShazamView()
-            }
-           
+            ShazamView()
+                .ignoresSafeArea()
         }
     }
 }
