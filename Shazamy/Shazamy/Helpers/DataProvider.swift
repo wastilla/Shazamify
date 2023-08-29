@@ -8,12 +8,10 @@
 import Combine
 import Foundation
 
-
 class DataProvider {
     static let shared = DataProvider()
     
     private var cancellables = Set<AnyCancellable>()
-    
     
     // Subscribers
     var artistAlbumsSubject = PassthroughSubject<[Item], Never>()
@@ -21,8 +19,6 @@ class DataProvider {
     var songRecsSubject = PassthroughSubject<[Track], Never>()
     
     var songSearchSubject = PassthroughSubject<[Items], Never>()
-    
-    var addToQueueSubject =  PassthroughSubject<Bool, Never>()
     
     private init() {}
 }
@@ -94,32 +90,6 @@ extension DataProvider {
                 guard let items = results.tracks?.items else { return }
                 // publish the data
                 self.songSearchSubject.send(items)
-            }).store(in: &self.cancellables)
-    }
-    
-    func addtoQueue() {
-        //queue?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
-//        let url = URL(string: "https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh")
-//        let url = URL(string:"https://api.spotify.com/v1/me/player/next")
-        let url = URL(string:"https://api.spotify.com/v1/users/niaqg5u4b5jqnwvlfuy8l7xdq/playlists")
-        let model = APIManager<CreatedPlaylistModel>.RequestModel(url: url, method: .post)
-        
-        APIManager.shared.queueRequest(with: model)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("HERERERLEJL")
-                    print(error)
-                }
-            }, receiveValue: { results in
-                // successful request
-               // guard let items = results else { return }
-                // publish the data
-                print("DONE")
-                print("Playlist ID: \(results.id)")
-                self.addToQueueSubject.send(true)
             }).store(in: &self.cancellables)
     }
 }

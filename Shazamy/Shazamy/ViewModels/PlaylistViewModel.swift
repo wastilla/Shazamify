@@ -7,13 +7,11 @@
 
 import Foundation
 import Combine
-import SwiftUI
 
 class PlaylistViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     
-    @AppStorage("userCode") var code: String = ""
     // async publishable data.
     @Published var albumList: Array<Item> = []
     @Published var albumImageUrls: Array<URL> = []
@@ -61,10 +59,6 @@ class PlaylistViewModel: ObservableObject {
                 albumImageUrls.append(imageUrl)
             }
         }
-    }
-    
-    func addToQueue(){
-        DataProvider.shared.addtoQueue()
     }
     
     // return albumImageList to view
