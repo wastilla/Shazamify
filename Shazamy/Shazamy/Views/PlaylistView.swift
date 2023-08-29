@@ -77,7 +77,7 @@ struct PlaylistView: View {
                 }
          
             }
-            .navigationBarHidden(false)
+            .navigationBarHidden(true)
         }
     }
 }
