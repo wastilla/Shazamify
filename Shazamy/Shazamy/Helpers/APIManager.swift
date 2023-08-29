@@ -122,13 +122,27 @@ class APIManager<T: Decodable> {
         // request model setups
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = model.method.rawValue
+        
+//        requestBody.queryItems = [
+//            URLQueryItem(name: "name", value: "Test Playlist"),
+//            URLQueryItem(name: "description", value: "Playlist Description"),
+//            URLQueryItem(name: "public", value: "false")
+//        ]
+        let json = [
+            "name" : "playlist name"
+        ]
+        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed)
+        
         switch model.method{
         case .get:
             // add 'Bearer ' to the token key for request headers
             urlRequest.allHTTPHeaderFields = ["Authorization": "Bearer \(AuthManager.shared.token)"]
             break
         case .post:
-            urlRequest.allHTTPHeaderFields = ["Authorization": "Bearer \(AuthManager.shared.token)"]
+            urlRequest.allHTTPHeaderFields = [
+                "Authorization": "Bearer \(AuthManager.shared.token)",
+                "Content-Type" : "application/json"
+            ]
             break
         default:
             break

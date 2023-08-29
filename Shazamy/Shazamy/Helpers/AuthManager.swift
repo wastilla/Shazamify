@@ -40,7 +40,7 @@ class AuthManager {
     public let signInURL: URL? = {
         let clientID = "806bb8fe25d34aa084a29444d21ae0ba"
         let clientSecret = "3c2693a110304029938dc77b67217115"
-        let scopes = "user-modify-playback-state"
+        let scopes = "playlist-modify-public%20playlist-modify-private"
         let redirectURI = "https://www.google.com/"
         let baseURL = "https://accounts.spotify.com/authorize/"
         let fullURL = "\(baseURL)?response_type=code&client_id=\(clientID)&scope=\(scopes)&redirect_uri=\(redirectURI)"

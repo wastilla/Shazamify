@@ -101,8 +101,8 @@ extension DataProvider {
         //queue?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
 //        let url = URL(string: "https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh")
 //        let url = URL(string:"https://api.spotify.com/v1/me/player/next")
-        let url = URL(string:"https://api.spotify.com/v1/me/player/pause")
-        let model = APIManager<AddToQueueModel>.RequestModel(url: url, method: .post)
+        let url = URL(string:"https://api.spotify.com/v1/users/niaqg5u4b5jqnwvlfuy8l7xdq/playlists")
+        let model = APIManager<CreatedPlaylistModel>.RequestModel(url: url, method: .post)
         
         APIManager.shared.queueRequest(with: model)
             .sink(receiveCompletion: { completion in
@@ -118,6 +118,7 @@ extension DataProvider {
                // guard let items = results else { return }
                 // publish the data
                 print("DONE")
+                print("Playlist ID: \(results.id)")
                 self.addToQueueSubject.send(true)
             }).store(in: &self.cancellables)
     }
